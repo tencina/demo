@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
-public class ExceptionHandlerController {
+public class ExceptionController {
 
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(value= HttpStatus.NOT_FOUND)
@@ -16,4 +16,12 @@ public class ExceptionHandlerController {
     public Response requestHandlingNoHandlerFound() {
         return new Response("Error", "Solicitud incorrecta");
     }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    Response messageBadRequest(Exception e){
+        return new Response("Error", "Parametros incorrectos");
+    }
+
 }
