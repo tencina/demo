@@ -20,7 +20,7 @@ public class ExceptionController {
     @org.springframework.web.bind.annotation.ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    Response messageBadRequest(Exception e){
+    public Response messageBadRequest(Exception e){
         return new Response("Error", "Parametros incorrectos");
     }
 
